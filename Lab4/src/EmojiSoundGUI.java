@@ -69,9 +69,10 @@ public class EmojiSoundGUI extends Frame{
         AudioInputStream stream;
         AudioFormat format;
         DataLine.Info info;
-        Clip[] clips;
+        Clip[] clips = {null};
 
 
+        return clips;
     }
 
 }
