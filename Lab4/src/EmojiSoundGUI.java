@@ -1,36 +1,40 @@
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class EmojiSoundGUI extends Frame{
-    JButton button1 = new JButton("Mike");
-    JButton button2 = new JButton("Dog");
-    JButton button3 = new JButton("Cat");
+public class EmojiSoundGUI extends Frame implements ActionListener {
+    JButton button1 = new JButton("Bamboo Hit sfx");
+    JButton button2 = new JButton("Censor beep sfx");
+    JButton button3 = new JButton("gmod Metal clanking sfx");
 
     EmojiSoundGUI() {
-        ImageIcon images[] = getImages();
+        ImageIcon[] images = getImages();
 
 
         c.gridx = 0;
         c.gridy = 0;
         button1.setIcon(images[0]);
+        button1.addActionListener(this);
         panel.add(button1, c);
 
         c.gridx = 0;
         c.gridy = 1;
         button2.setIcon(images[1]);
+        button2.addActionListener(this);
         panel.add(button2, c);
 
         c.gridx = 0;
         c.gridy = 2;
         button3.setIcon(images[2]);
+        button3.addActionListener(this);
         panel.add(button3, c);
 
         setVisible(true);
@@ -64,15 +68,26 @@ public class EmojiSoundGUI extends Frame{
         return iconArray;
     }
 
-    public static Clip[] getSounds() {
-        File file;
-        AudioInputStream stream;
-        AudioFormat format;
-        DataLine.Info info;
-        Clip[] clips = {null};
+    public static void playSound(String filename) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filename).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
 
-
-        return clips;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if (source == button1)
+            playSound("sounds/Bamboo Hit Sound Effect.wav");
+        else if (source == button2)
+            playSound("sounds/censor-beep-01.wav");
+        else if (source == button3)
+            playSound("sounds/sfx_metal_clanging_gmod_garrys_mod_source_half_life.wav");
+    }
 }
