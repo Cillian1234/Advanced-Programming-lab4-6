@@ -53,7 +53,7 @@ public class EmojiSoundGUI extends Frame implements ActionListener {
         image = bufferedImage.getScaledInstance(150,150, Image.SCALE_DEFAULT);
         ImageIcon mike = new ImageIcon(image);
 
-        try {bufferedImage = ImageIO.read(new File("images/dog.png"));}
+        try {bufferedImage = ImageIO.read(new File("images/crowbar.png"));}
         catch (IOException e) {throw new RuntimeException(e);}
         image = bufferedImage.getScaledInstance(150,150, Image.SCALE_DEFAULT);
         ImageIcon cat = new ImageIcon(image);
