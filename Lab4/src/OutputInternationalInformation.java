@@ -24,7 +24,6 @@ public class OutputInternationalInformation {
             case 1 -> displayLocalizedInformation(FR);
             case 2 -> displayLocalizedInformation(EN);
             case 3 -> displayLocalizedInformation(JP);
-
         }
     }
 
