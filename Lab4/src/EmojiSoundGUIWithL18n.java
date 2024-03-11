@@ -9,15 +9,24 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class EmojiSoundGUI extends Frame implements ActionListener {
-    JButton button1 = new JButton("Bamboo Hit sfx");
-    JButton button2 = new JButton("Censor beep sfx");
-    JButton button3 = new JButton("gmod Metal clanking sfx");
+public class EmojiSoundGUIWithL18n extends Frame implements ActionListener {
+    ResourceBundle res[];
+    JButton button1 = new JButton();
+    JButton button2 = new JButton();
+    JButton button3 = new JButton();
+    JButton French = new JButton();
+    JButton English = new JButton();
+    JButton Japanese = new JButton();
 
-    EmojiSoundGUI() {
+    EmojiSoundGUIWithL18n() {
+        Locale locale = new Locale("en", "GB");
+        res[0] = res.getBundle("ProgramResource_en", locale);
+        res[1] = res.getBundle("ProgramResource_fr");
+
         ImageIcon[] images = getImages();
-
 
         c.gridx = 0;
         c.gridy = 0;
