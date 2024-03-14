@@ -13,18 +13,19 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class EmojiSoundGUIWithL18n extends Frame implements ActionListener {
-    ResourceBundle res[];
+    ResourceBundle[] res;
     JButton button1 = new JButton();
     JButton button2 = new JButton();
     JButton button3 = new JButton();
-    JButton French = new JButton();
+    JButton French = new JButton("test");
     JButton English = new JButton();
     JButton Japanese = new JButton();
 
     EmojiSoundGUIWithL18n() {
         Locale locale = new Locale("en", "GB");
-        res[0] = res.getBundle("ProgramResource_en", locale);
-        res[1] = res.getBundle("ProgramResource_fr");
+        res[0] = res[0].getBundle("ProgramResource_en", locale);
+        res[1] = res[1].getBundle("ProgramResource_fr", locale);
+        res[2] = res[2].getBundle("ProgramResource_ja", locale);
 
         ImageIcon[] images = getImages();
 
@@ -45,6 +46,12 @@ public class EmojiSoundGUIWithL18n extends Frame implements ActionListener {
         button3.setIcon(images[2]);
         button3.addActionListener(this);
         panel.add(button3, c);
+
+
+        c.gridx = 0;
+        c.gridy = 3;
+        French.setText(res[1].getString("FrenchButton"));
+        panel.add(French, c);
 
         setVisible(true);
     }
