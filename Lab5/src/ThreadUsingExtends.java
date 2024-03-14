@@ -2,8 +2,7 @@ public class ThreadUsingExtends extends Thread {
     static String[] letters = {"A", "B", "C", "D"};
     static int threadCount = 0;
     ThreadUsingExtends(String threadName) {
-        super(threadName +" "+threadCount);
-        threadCount++;
+        super(threadName +" "+threadCount++);
     }
 
     public void run() {

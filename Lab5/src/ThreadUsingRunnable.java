@@ -4,7 +4,7 @@ public class ThreadUsingRunnable implements Runnable {
 
     @Override
     public void run() {
-        Thread.currentThread().setName("cum");
+        Thread.currentThread().setName("Cillian " + threadCount++);
         for (String letter : letters) {
             System.out.printf("%S %S\n", Thread.currentThread().getName(), letter);
         }
